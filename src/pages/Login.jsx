@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { auth } from "../utils/firebaseConfig";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import "../styles/sign.css"; // Ensure this path is correct
-import { FcGoogle } from "react-icons/fc"; // Google icon
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -9,21 +10,20 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Basic validation
+    
     if (!email || !password) {
       setError("Please fill in all fields.");
       return;
     }
-    setError("");
-    console.log("Login with:", email, password);
-    navigate("/dashboard"); // Redirect to dashboard (dummy)
-  };
 
-  const handleGoogleLogin = () => {
-    console.log("Login with Google");
-    // Add Google login logic here
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate("/"); 
+    } catch (err) {
+      setError("Invalid email or password. Please try again.");
+    }
   };
 
   return (
@@ -60,15 +60,6 @@ const Login = () => {
             Don't have an account?{" "}
             <span onClick={() => navigate("/signup")}>Sign Up</span>
           </p>
-          <p className="auth-forgot-password" onClick={() => navigate("/forgot-password")}>
-            Forgot Password?
-          </p>
-        </div>
-        <div className="auth-social-login">
-          <p>Or continue with:</p>
-          <button className="social-button google" onClick={handleGoogleLogin}>
-            <FcGoogle /> Google
-          </button>
         </div>
       </div>
     </div>

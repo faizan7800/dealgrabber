@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { auth } from "../utils/firebaseConfig";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import toast from 'react-hot-toast'
 import "../styles/sign.css"; // Ensure this path is correct
 import { FcGoogle } from "react-icons/fc"; // Google icon
 
@@ -10,9 +13,11 @@ const Signup = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
-    // Basic validation
+    setError(""); // Reset previous errors
+    const loadingSignup = toast.loading("Creating your account");
+    // Validation
     if (!email || !password || !confirmPassword) {
       setError("Please fill in all fields.");
       return;
@@ -21,14 +26,22 @@ const Signup = () => {
       setError("Passwords do not match.");
       return;
     }
-    setError("");
-    console.log("Signup with:", email, password);
-    navigate("/dashboard"); // Redirect to dashboard (dummy)
-  };
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters.");
+      return;
+    }
 
-  const handleGoogleSignup = () => {
-    console.log("Signup with Google");
-    // Add Google signup logic here
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      toast.success("Account created successfully! You can login now", {id: loadingSignup});
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+      navigate("/login")
+    } catch (err) {
+      setError(err.message);
+      toast.error("Signup failed! " + err.message, {id: loadingSignup});
+    }
   };
 
   return (
@@ -74,12 +87,6 @@ const Signup = () => {
             Already have an account?{" "}
             <span onClick={() => navigate("/login")}>Login</span>
           </p>
-        </div>
-        <div className="auth-social-login">
-          <p>Or sign up with:</p>
-          <button className="social-button google" onClick={handleGoogleSignup}>
-            <FcGoogle /> oogle
-          </button>
         </div>
       </div>
     </div>

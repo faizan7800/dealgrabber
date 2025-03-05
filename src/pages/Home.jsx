@@ -4,10 +4,14 @@ import "../styles/Home.css";
 import {db} from '../utils/firebaseConfig'
 import {collection, addDoc} from 'firebase/firestore'
 import spinPlaceholder from "../assets/images/1994_spincircle.png";
+import { auth } from "../utils/firebaseConfig";
 // import Toaster from 'react-hot-toast';
 import toast from "react-hot-toast";
+import SpinWheel from "../components/SpinWheel";
 
 const Home = () => {
+
+  const prizes = ['No Prize', 'Your Prize 1', 'Your Prize 2', 'Your Prize 3', 'Your Prize 4', 'Your Prize 5'];
   const [showPopup, setShowPopup] = useState(true);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -36,6 +40,17 @@ const Home = () => {
     }
   };
 
+
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    const user = auth.currentUser;
+
+    if (user) {
+      const name = user.email.split("@")[0];
+      setUsername(name);
+    }
+  }, []);
 
   const handleNavigation = (path) => {
     setShowSplash(true);
@@ -96,13 +111,13 @@ const Home = () => {
 
       {/* Homepage Content */}
       <div className="home-content">
-        <h1>Welcome to Deal Grabber</h1>
+      <h1>Welcome {username ? username : ""} to Deal Grabber</h1>
         <p>Spin to win amazing Deals & Discounts from Dealopoly.</p>
         <p>Dealopoly is your super search engine for local offers in your area.</p>
 
         {/* Spin-to-Win Placeholder */}
         <div className="spin-game">
-          <img src={spinPlaceholder} alt="Spin to Win Game" />
+          <SpinWheel prizes={prizes}/>
         </div>
 
         {/* Download to Home Screen Prompt */}

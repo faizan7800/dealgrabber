@@ -44,7 +44,7 @@ const Navbar = () => {
         </li>
         <li>
           <Link to="/localopoly" className={location.pathname === "/localopoly" ? "active" : ""} onClick={toggleMenu}>
-            Localopoly
+            Deal Pages
           </Link>
         </li>
         <li>

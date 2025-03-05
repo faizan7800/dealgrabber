@@ -13,7 +13,8 @@ import UrbanEats from "./pages/UrbanEats";
 import Mobilopoly from "./pages/Mobilopoly";
 import Localopoly from "./pages/Localopoly";
 import Dealopoly from "./pages/Dealopoly";
-import { Toaster } from "react-hot-toast"; 'react-hot-toast'
+import { Toaster } from "react-hot-toast";import PartnersSplash from "./pages/Partners";
+ 'react-hot-toast'
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -53,6 +54,7 @@ const App = () => {
         <Route path="/mobilopoly" element={<Mobilopoly />} />
         <Route path="/localopoly" element={<Localopoly />} />
         <Route path="/dealopoly" element={<Dealopoly />} />
+        <Route path="/partners" element={<PartnersSplash />} />
       </Routes>
     </Router>
     <Toaster/>
