@@ -32,16 +32,6 @@ const Navbar = () => {
             Deals
           </Link>
         </li>
-        <li>
-          <Link to="/urbaneats" className={location.pathname === "/urbaneats" ? "active" : ""} onClick={toggleMenu}>
-            UrbanEats
-          </Link>
-        </li>
-        <li>
-          <Link to="/signup" className={location.pathname === "/signup" ? "active" : ""} onClick={toggleMenu}>
-            Sign Up
-          </Link>
-        </li>
       </ul>
 
       {/* Hamburger Menu for Mobile */}
