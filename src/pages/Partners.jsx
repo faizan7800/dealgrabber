@@ -40,7 +40,7 @@ const PartnersSplash = () => {
 
     </div>
 
-      <div className="nav-buttons">
+      <div id="nav-buttons-partners">
           <button onClick={() => navigate("/foodopoly")}>Foodopoly</button>
           <button onClick={() => navigate("/mobilopoly")}>Mobilopoly </button>
           {/* <button onClick={() => handleNavigation("/about")}>About Us</button> */}

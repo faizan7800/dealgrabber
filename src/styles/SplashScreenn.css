@@ -12,7 +12,7 @@
   }
 
 
-  .nav-buttons {
+  #nav-buttons-partners {
     display: flex;
     width: 100vw;
     height: 100vh;
@@ -22,7 +22,43 @@
     gap: 15px;
     margin-top: 20px;
   }
+
+  #nav-buttons-partners button {
+    background: #148446;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    min-width: 180px;
+    text-align: center;
+    transition: 0.3s;
+  }
   
+  #nav-buttons-partners button:hover {
+    background: #044f70;
+  }
+  
+  /* Prevent Multiple Clicks */
+  #nav-buttons-partners button:disabled {
+    background: #888;
+    cursor: not-allowed;
+  }
+  
+  @media (max-width: 768px) {
+  
+    #nav-buttons-partners {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    #nav-buttons-partners button {
+      min-width: 100%;
+    }
+  }
+  
+
   
   .splash-image_dealopoly {
     max-width: 100%;

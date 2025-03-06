@@ -28,38 +28,13 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/about" className={location.pathname === "/about" ? "active" : ""} onClick={toggleMenu}>
-            About
-          </Link>
-        </li>
-        <li>
           <Link to="/deals" className={location.pathname === "/deals" ? "active" : ""} onClick={toggleMenu}>
             Deals
           </Link>
         </li>
         <li>
-          <Link to="/dealopoly" className={location.pathname === "/dealopoly" ? "active" : ""} onClick={toggleMenu}>
-            Dealopoly
-          </Link>
-        </li>
-        <li>
-          <Link to="/localopoly" className={location.pathname === "/localopoly" ? "active" : ""} onClick={toggleMenu}>
-            Deal Pages
-          </Link>
-        </li>
-        <li>
-          <Link to="/mobilopoly" className={location.pathname === "/mobilopoly" ? "active" : ""} onClick={toggleMenu}>
-            Mobilopoly
-          </Link>
-        </li>
-        <li>
           <Link to="/urbaneats" className={location.pathname === "/urbaneats" ? "active" : ""} onClick={toggleMenu}>
             UrbanEats
-          </Link>
-        </li>
-        <li>
-          <Link to="/partners" className={location.pathname === "/partners" ? "active" : ""} onClick={toggleMenu}>
-            Partners
           </Link>
         </li>
         <li>

@@ -124,10 +124,11 @@ const Home = () => {
         <button className="download-btn">Add to Home Screen</button>
 
         {/* Navigation Buttons */}
-        <div className="nav-buttons">
-          <button onClick={() => handleNavigation("https://dealopoly.app/")}>Dealopoly</button>
-          <button onClick={() => handleNavigation("https://heyzine.com/flip-book/6bcbb6f58b.html#page/1")}>Deal Pages</button>
-          <button onClick={() => handleNavigation("/partners")}>Partners</button>
+        <div id="nav-buttons">
+          <button onClick={() => navigate("/dealopoly")}>Dealopoly</button>
+          <button onClick={() => navigate("/localopoly")}>Deal Pages</button>
+          <button onClick={() => navigate("/partners")}>Partners</button>
+          <button onClick={() => navigate("/about")}>About</button>
           {/* <button onClick={() => handleNavigation("/about")}>About Us</button> */}
         </div>
       </div>

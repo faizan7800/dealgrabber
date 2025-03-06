@@ -117,7 +117,7 @@
 }
 
 /* Navigation Buttons (Below "Add to Home Screen") */
-.nav-buttons {
+#nav-buttons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -125,7 +125,7 @@
   margin-top: 20px;
 }
 
-.nav-buttons button {
+#nav-buttons button {
   background: #148446;
   color: white;
   padding: 12px 20px;
@@ -138,12 +138,12 @@
   transition: 0.3s;
 }
 
-.nav-buttons button:hover {
+#nav-buttons button:hover {
   background: #044f70;
 }
 
 /* Prevent Multiple Clicks */
-.nav-buttons button:disabled {
+#nav-buttons button:disabled {
   background: #888;
   cursor: not-allowed;
 }
@@ -154,12 +154,12 @@
     width: 95%;
   }
 
-  .nav-buttons {
+  #nav-buttons {
     flex-direction: column;
     gap: 10px;
   }
 
-  .nav-buttons button {
+  #nav-buttons button {
     min-width: 100%;
   }
 }

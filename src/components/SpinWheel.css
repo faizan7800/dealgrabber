@@ -126,13 +126,6 @@
     padding-left: 0px;
     opacity: 0.25;
   
-    /* 
-      Largeur du triangle
-      Je ne sais pas pourquoi j'ai besoin d'ajouter 
-        " + var(--wheel-size) / 2 " dans slice-max-width  ==> donne 2.PI.R + R
-      mais globalement ca marche a peu près bien 
-      TODO: A étudier 
-    */
     --slice-max-width: calc(var(--PI) * var(--wheel-size) + var(--wheel-size) / 2);
     --slice-width: calc((var(--slice-max-width) / var(--nb-item)) - var(--wheel-slice-spacing));
     border: solid transparent calc(var(--slice-width) / 2);
@@ -141,3 +134,32 @@
     border-right: solid var(--neutral-color) calc(var(--wheel-size) / 2);
   }
   
+
+
+  @media (max-width: 550px) {
+    :root {
+      --wheel-size: 250px; /* Reduce wheel size for small screens */
+      --wheel-border-size: 3px; /* Adjust border size */
+      --wheel-slice-spacing: 30px; /* Adjust slice spacing */
+    }
+  
+    .wheel-container {
+      width: calc(var(--wheel-size) + 2 * var(--wheel-border-size));
+      height: calc(var(--wheel-size) + 2 * var(--wheel-border-size));
+    }
+  
+    .wheel {
+      width: var(--wheel-size);
+      height: var(--wheel-size);
+    }
+  
+    .wheel-item {
+      padding: 0 15px 0 30px; /* Adjust text spacing */
+    }
+  
+    .wheel::after {
+      width: 15px;
+      height: 15px;
+    }
+  
+  }
