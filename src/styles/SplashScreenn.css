@@ -20,7 +20,6 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
-    margin-top: 20px;
   }
 
   #nav-buttons-partners button {
@@ -51,6 +50,9 @@
     #nav-buttons-partners {
       flex-direction: column;
       gap: 10px;
+      width: 80%;
+      margin: 0px auto;
+      padding: 0 2rem;
     }
   
     #nav-buttons-partners button {

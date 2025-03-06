@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/SplashScreenn.css";
 import { Link } from "react-router-dom";
 import partnersImage from "../assets/images/young-man.jpg"; // Placeholder Image
+import SplashScreen from "./SplashScreen";
 
 
 const PartnersSplash = () => {
@@ -15,30 +16,36 @@ const PartnersSplash = () => {
 
     setTimeout(() => {
       let splashScreen = document.querySelector(".splash-screen_dealopoly");
+      let navButtons = document.querySelector("#nav-buttons-partners");
       if (splashScreen) {
         splashScreen.style.display = "none";
+        navButtons.style.display = "flex";
       }
       clearInterval(timer); // Stop countdown when splash disappears
     }, 5000);
     return () => clearInterval(timer);
   }, [navigate]);
 
+  const [showSplashScreen, setShowSplashScreen] = useState(true)
+
+
+  useEffect(() => {
+      const timer = setTimeout(() => {
+        setShowSplashScreen(false);
+      }, 5000); // Show splash for 3 sec
+      return () => clearTimeout(timer);
+    }, []);
+    
+  
+    if(showSplashScreen){
+      return <SplashScreen partners={true}/>
+    }
+  
+
   return (
 
     <>
-    <div className="splash-screen_dealopoly">
-      <img src={partnersImage} alt="Dealopoly" className="splash-image_dealopoly" />
-     
-      <p className="splash-text_dealopoly">
-        "Discover Dealopoly, where every deal becomes an exciting adventure for
-        exclusive rewards. Engage in exciting challenges and unlock unbeatable
-        discounts at your favorite local spots."
-       
-      </p>
-      <small style={{zIndex: "10001", paddingBottom: "10px", color: "#044f70"}}>This splash screen will only show for {countdown} seconds</small>
-      <button className="button_dealopoly"><Link to={"/"}>Home</Link></button>
-
-    </div>
+   
 
       <div id="nav-buttons-partners">
           <button onClick={() => navigate("/foodopoly")}>Foodopoly</button>
